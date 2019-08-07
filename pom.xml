@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <jackson.version>1.9.11</jackson.version>
+        <!-- Consider moving to the org.glassfish.jersey set of artefacts -->
+        <jersey.version>1.19.4</jersey.version>
+        <openfire.version>4.3.0</openfire.version>
+    </properties>
+
+    <parent>
+        <artifactId>plugins</artifactId>
+        <groupId>org.igniterealtime.openfire</groupId>
+        <version>4.3.0</version>
+    </parent>
+    <groupId>dvg</groupId>
+    <artifactId>openfire_plugin_test01</artifactId>
+    <version>1.0</version>
+
+
+
+    <repositories>
+        <!-- Where we obtain dependencies. -->
+        <repository>
+            <id>igniterealtime</id>
+            <name>Ignite Realtime Repository</name>
+            <url>https://igniterealtime.org/archiva/repository/maven/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <!-- Typically used to retrieve Maven plugins used by this project from. This
+             apparently is also used to obtain the dependencies _used by_ plugins
+             (eg: openfire-plugin-assembly-descriptor) -->
+        <pluginRepository>
+            <id>igniterealtime</id>
+            <name>Ignite Realtime Repository</name>
+            <url>https://igniterealtime.org/archiva/repository/maven/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>${jersey.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-servlet</artifactId>
+            <version>${jersey.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.owlike</groupId>
+            <artifactId>genson</artifactId>
+            <version>0.99</version>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <finalName>openfire-plugin-test01</finalName>
+<!--        <pluginManagement>&lt;!&ndash; lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) &ndash;&gt;-->
+<!--            <plugins>-->
+<!--                <plugin>-->
+<!--                    <artifactId>maven-clean-plugin</artifactId>-->
+<!--                    <version>3.1.0</version>-->
+<!--                </plugin>-->
+<!--                &lt;!&ndash; see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging &ndash;&gt;-->
+<!--                <plugin>-->
+<!--                    <artifactId>maven-resources-plugin</artifactId>-->
+<!--                    <version>3.0.2</version>-->
+<!--                </plugin>-->
+<!--                <plugin>-->
+<!--                    <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                    <version>3.8.0</version>-->
+<!--                </plugin>-->
+<!--                <plugin>-->
+<!--                    <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                    <version>2.22.1</version>-->
+<!--                </plugin>-->
+<!--                <plugin>-->
+<!--                    <artifactId>maven-war-plugin</artifactId>-->
+<!--                    <version>3.2.2</version>-->
+<!--                </plugin>-->
+<!--                <plugin>-->
+<!--                    <artifactId>maven-install-plugin</artifactId>-->
+<!--                    <version>2.5.2</version>-->
+<!--                </plugin>-->
+<!--                <plugin>-->
+<!--                    <artifactId>maven-deploy-plugin</artifactId>-->
+<!--                    <version>2.8.2</version>-->
+<!--                </plugin>-->
+<!--            </plugins>-->
+<!--        </pluginManagement>-->
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-jspc-maven-plugin</artifactId>
+                <!-- Force the JSP compiler to an Openfire 4.2 compatible version -->
+                <version>9.2.14.v20151106</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.igniterealtime.openfire</groupId>
+                        <artifactId>xmppserver</artifactId>
+                        <version>${openfire.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+</project>
