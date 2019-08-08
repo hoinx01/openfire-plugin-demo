@@ -16,9 +16,11 @@
         <groupId>org.igniterealtime.openfire</groupId>
         <version>4.3.0</version>
     </parent>
-    <groupId>dvg</groupId>
-    <artifactId>openfire_plugin_test01</artifactId>
+    <groupId>vn.dvg.openfire.plugins</groupId>
+    <artifactId>autoportal</artifactId>
     <version>1.0</version>
+    <name>DVG AutoPortal</name>
+    <description>Nguyễn Xuân Hồi</description>
 
 
 
@@ -62,6 +64,21 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-core</artifactId>
+            <version>1.19.4</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>jsr311-api</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <dependency>
             <groupId>com.owlike</groupId>
             <artifactId>genson</artifactId>
             <version>0.99</version>
@@ -69,8 +86,7 @@
 
     </dependencies>
     <build>
-        <sourceDirectory>src/main/java</sourceDirectory>
-        <finalName>openfire-plugin-test01</finalName>
+        <sourceDirectory>src/java</sourceDirectory>
 <!--        <pluginManagement>&lt;!&ndash; lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) &ndash;&gt;-->
 <!--            <plugins>-->
 <!--                <plugin>-->
@@ -122,5 +138,17 @@
                 </dependencies>
             </plugin>
         </plugins>
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-jar-plugin</artifactId>-->
+<!--                <version>3.1.2</version>-->
+<!--                <configuration>-->
+<!--                    <includes>-->
+<!--                        <include>**.png</include>-->
+<!--                    </includes>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
     </build>
 </project>
