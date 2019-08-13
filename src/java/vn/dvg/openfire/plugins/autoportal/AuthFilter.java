@@ -38,6 +38,12 @@ public class AuthFilter implements ContainerRequestFilter {
      */
     @Override
     public ContainerRequest filter(ContainerRequest containerRequest) throws WebApplicationException {
+        try{
+            AuthFactory.authenticate("admin", "tulanh92");
+        }
+        catch(Exception e){
+
+        }
         LOG.debug(httpRequest.getRequestURI());
         return containerRequest;
 

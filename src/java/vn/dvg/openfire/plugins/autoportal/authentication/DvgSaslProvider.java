@@ -14,7 +14,7 @@ public class DvgSaslProvider extends Provider
     /**
      * The provider name.
      */
-    public static final String NAME = "TikiSasl";
+    public static final String NAME = "DvgSasl";
 
     /**
      * The provider version number.

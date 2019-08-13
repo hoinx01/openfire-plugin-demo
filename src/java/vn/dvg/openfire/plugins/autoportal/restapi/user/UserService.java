@@ -6,21 +6,21 @@ import vn.dvg.openfire.plugins.autoportal.restapi.user.models.UserModel;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-@Path("/")
+@Path("/dvg-autoportal/api/v1/users")
 @Produces(MediaType.APPLICATION_JSON)
 public class UserService {
     @GET
-    @Path("/users/{id}")
+    @Path("/{id}")
     public UserModel GetUserById(@PathParam("id") String id){
         val user = new UserModel();
-        user.setName("Nguyễn Xuân Hồi");
+        user.setName("Nguyễn Xuân Hồi 02");
         user.setPhoneNumber("01234343434");
         user.setAvatarUrl("http://google.com.vn");
         return user;
     }
 
     @GET
-    @Path("/users")
+    @Path("/")
     public UserModel GetUser(){
         val user = new UserModel();
         user.setName("Nguyễn Xuân Hồi");

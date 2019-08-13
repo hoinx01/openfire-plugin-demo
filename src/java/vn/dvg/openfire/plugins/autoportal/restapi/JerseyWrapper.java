@@ -2,6 +2,7 @@ package vn.dvg.openfire.plugins.autoportal.restapi;
 
 import com.sun.jersey.api.core.PackagesResourceConfig;
 import com.sun.jersey.spi.container.servlet.ServletContainer;
+import org.jivesoftware.admin.AuthCheckFilter;
 import vn.dvg.openfire.plugins.autoportal.RESTExceptionMapper;
 import vn.dvg.openfire.plugins.autoportal.restapi.user.UserService;
 
@@ -64,15 +65,15 @@ public class JerseyWrapper extends ServletContainer {
 
 
     static {
-        JERSEY_LOGGER.setLevel(Level.SEVERE);
+//        JERSEY_LOGGER.setLevel(Level.SEVERE);
         config = new HashMap<String, Object>();
         config.put(RESOURCE_CONFIG_CLASS_KEY, RESOURCE_CONFIG_CLASS);
         config.put("com.sun.jersey.api.json.POJOMappingFeature", true);
 
         prc = new PackagesResourceConfig(SCAN_PACKAGE_DEFAULT);
         prc.setPropertiesAndFeatures(config);
-        prc.getProperties().put(CONTAINER_RESPONSE_FILTERS, CORSFILTER);
-        prc.getProperties().put(CONTAINER_RESPONSE_FILTERS, GZIP_FILTER);
+//        prc.getProperties().put(CONTAINER_RESPONSE_FILTERS, CORSFILTER);
+//        prc.getProperties().put(CONTAINER_RESPONSE_FILTERS, GZIP_FILTER);
         loadAuthenticationFilter();
 
         prc.getClasses().add(UserService.class);
@@ -137,7 +138,6 @@ public class JerseyWrapper extends ServletContainer {
 //        loadAuthenticationFilter();
         super.init(servletConfig);
         // Exclude this servlet from requering the user to login
-//        AuthCheckFilter.addExclude(SERVLET_URL);
     }
 
     /*
@@ -149,7 +149,6 @@ public class JerseyWrapper extends ServletContainer {
     public void destroy() {
         super.destroy();
         // Release the excluded URL
-//        AuthCheckFilter.removeExclude(SERVLET_URL);
     }
 
     /*

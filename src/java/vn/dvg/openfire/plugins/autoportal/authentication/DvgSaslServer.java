@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import javax.security.sasl.Sasl;
 import javax.security.sasl.SaslException;
 import javax.security.sasl.SaslServer;
+import org.jivesoftware.util.Log;
 
 /**
  * A SaslServer implementation of the TikiToken mechanism.
@@ -52,14 +53,14 @@ public class DvgSaslServer implements SaslServer
 
     public byte[] evaluateResponse( byte[] response ) throws SaslException
     {
-        Log.trace( "Evaluating new response..." );
+        Log.debug( "Evaluating new response..." );
 
         if( isComplete() )
         {
             throw new IllegalStateException( "DVG-REST authentication was already completed." );
         }
 
-        Log.trace( "Current state: {}", state );
+        Log.debug( "Current state: {}", state );
         switch ( state )
         {
             case POST_INITIAL_RESPONSE:
@@ -103,7 +104,7 @@ public class DvgSaslServer implements SaslServer
 //                    }
 //
 //                    Log.debug( "Authentication successful for user '{}'!", username );
-                    authorizationID = "hoinx01@hoinx.xmpp.com";
+                    authorizationID = "admin@hoinx.xmpp.com";
                     return null;
                 }
 

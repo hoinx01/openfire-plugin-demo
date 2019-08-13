@@ -36,7 +36,7 @@ public class DvgAutoPortalPlugin implements Plugin
     @Override
     public void initializePlugin( PluginManager manager, File pluginDirectory )
     {
-        AuthCheckFilter.addExclude("autoportal/");
+        AuthCheckFilter.addExclude("dvg-autoportal/*");
         Security.addProvider( new DvgSaslProvider() );
         SASLAuthentication.addSupportedMechanism( DvgSaslServer.MECHANISM_NAME );
     }
