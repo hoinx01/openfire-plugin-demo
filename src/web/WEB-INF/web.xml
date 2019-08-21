@@ -6,7 +6,7 @@
     <display-name>Archetype Created Web Application</display-name>
     <servlet>
         <servlet-name>DvgAPJerseyWrapper</servlet-name>
-        <servlet-class>vn.dvg.openfire.plugins.autoportal.restapi.JerseyWrapper</servlet-class>
+        <servlet-class>vn.dvg.openfire.plugins.autoportal.restapi.RestApiContainer</servlet-class>
     </servlet>
 
     <!-- Servlet mappings -->

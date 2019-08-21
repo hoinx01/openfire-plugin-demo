@@ -8,6 +8,9 @@ import javax.security.sasl.SaslException;
 import javax.security.sasl.SaslServer;
 import org.jivesoftware.util.Log;
 
+import java.nio.charset.StandardCharsets;
+import java.util.StringTokenizer;
+
 /**
  * A SaslServer implementation of the TikiToken mechanism.
  *
@@ -86,8 +89,12 @@ public class DvgSaslServer implements SaslServer
                     state = State.COMPLETED;
 
 //                    Log.trace( "Parsing data from client response..." );
-//                    final String data = new String( response, StandardCharsets.UTF_8);
-//                    final StringTokenizer tokens = new StringTokenizer( data, "\0");
+                    final String data = new String( response, StandardCharsets.UTF_8);
+                    final StringTokenizer tokens = new StringTokenizer( data, "\0");
+                    String token = "";
+                    for(int i = 0; i < tokens.countTokens(); i++)
+                        token += tokens.nextToken();
+                    Log.debug("received token: " +token);
 //                    if ( tokens.countTokens() != 2 )
 //                    {
 //                        throw new SaslException( "Exactly two NUL (U+0000) character-separated values are expected (a username, followed by a Tiki access token). Instead " +  tokens.countTokens() + " were found." );

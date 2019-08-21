@@ -7,7 +7,7 @@ import org.jivesoftware.openfire.net.SASLAuthentication;
 import org.jivesoftware.util.JiveGlobals;
 import vn.dvg.openfire.plugins.autoportal.authentication.DvgSaslProvider;
 import vn.dvg.openfire.plugins.autoportal.authentication.DvgSaslServer;
-import vn.dvg.openfire.plugins.autoportal.restapi.JerseyWrapper;
+import vn.dvg.openfire.plugins.autoportal.restapi.RestApiContainer;
 
 import java.io.File;
 import java.security.Security;
@@ -48,7 +48,7 @@ public class DvgAutoPortalPlugin implements Plugin
         Security.removeProvider( DvgSaslProvider.NAME );
     }
     public String loadAuthenticationFilter(String customAuthFilterClassName) {
-        return JerseyWrapper.tryLoadingAuthenticationFilter(customAuthFilterClassName);
+        return RestApiContainer.tryLoadingAuthenticationFilter(customAuthFilterClassName);
     }
     public String getHttpAuth() {
         return httpAuth;
